@@ -137,7 +137,6 @@ while running:
     for powerup in powerups:
         powerup_rect = pygame.Rect(powerup[0], powerup[1], powerup_size, powerup_size)
         if player_rect.colliderect(powerup_rect):
-            powerups.remove(powerup)
             shooting_speed += 2  # Increase shooting speed
             powerup_active = True
             pygame.time.set_timer(pygame.USEREVENT, 5000)  # Set a timer to deactivate power-up after 5 seconds
