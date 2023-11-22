@@ -11,7 +11,7 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
 # Player
-player_size = 50
+player_size = 25
 player_speed = 5
 bullet_speed = 7
 initial_shooting_speed = 10  # Initial shooting speed
