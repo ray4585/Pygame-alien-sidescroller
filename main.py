@@ -19,6 +19,7 @@ initial_shooting_speed = 10  # Initial shooting speed
 # Alien
 alien_size = 50
 alien_speed = 3
+alien_speed_increment = 0.1  # Speed increment over time
 
 # Power-up
 powerup_size = 30
@@ -51,6 +52,7 @@ player_y = HEIGHT - 2 * player_size
 score = 0
 shooting_speed = initial_shooting_speed
 powerup_active = False
+alien_speed_timer = pygame.time.get_ticks()  # Track the time elapsed
 
 aliens = []
 bullets = []
@@ -92,6 +94,11 @@ while running:
             spawn_powerup()
 
     # Update aliens
+    elapsed_time = pygame.time.get_ticks() - alien_speed_timer
+    if elapsed_time > 5000:  # Increase alien speed every 5 seconds
+        alien_speed += alien_speed_increment
+        alien_speed_timer = pygame.time.get_ticks()
+
     for alien in aliens:
         alien[1] += alien_speed
         if alien[1] > HEIGHT:
