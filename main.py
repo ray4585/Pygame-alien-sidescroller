@@ -125,8 +125,15 @@ while running:
                 aliens.remove(alien)
                 spawn_alien()
 
-    # Collision detection for player and power-ups
+    # Collision detection for player and aliens
     player_rect = pygame.Rect(player_x, player_y, player_size, player_size)
+    for alien in aliens:
+        alien_rect = pygame.Rect(alien[0], alien[1], alien_size, alien_size)
+        if player_rect.colliderect(alien_rect):
+            print("Game Over!")
+            running = False
+
+    # Collision detection for player and power-ups
     for powerup in powerups:
         powerup_rect = pygame.Rect(powerup[0], powerup[1], powerup_size, powerup_size)
         if player_rect.colliderect(powerup_rect):
